@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz | Question
+	{{app.request.get('question')}}
+{% endblock %}
+
+{% block body %}
+<script src="https://kit.fontawesome.com/cb0b768da2.js" crossorigin="anonymous"></script>
+	<style>
+		body {
+			font-family: 'Inter', sans-serif;
+			overflow-y: hidden;
+		}
+		#row {
+			background-color: #3A4D58;
+			height: 95vh;
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+		}
+		#block {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 55%;
+			background-color: #C4C4C4;
+			padding: 0 3% 4%;
+			border-radius: 20px;
+			position: relative;
+		}
+		#close a {
+			font-size: 30px;
+			position: absolute;
+			top: 15px;
+			right: 0px;
+			color: #001F31;
+		}
+		#close a:hover {
+			transform: rotate(90deg);
+			transition: all 0.2s;
+		}
+		#block_timer {
+			display: flex;
+			justify-content: flex-end;
+			width: 75%;
+		}
+		#timer {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			background-color: #5d588e;
+			transform: translateY(35px);
+		}
+		#timer p {
+			margin: 0;
+		}
+		#question {
+			background-color: #fff;
+			border-radius: 27px;
+			width: 80%;
+			padding: 5% 2%;
+			margin-bottom: 2%;
+			text-align: center;
+		}
+		#quest_block {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 80%;
+		}
+		.question {
+			text-align: center;
+			width: 80%;
+			background-color: #fff;
+			border-radius: 27px;
+			padding: 3% 0;
+			margin: 1% 0;
+			color: black;
+		}
+		.question:hover {
+			transform: translateY(-2px);
+			cursor: pointer;
+			background-color: #5d588e;
+			color: #fff;
+		}
+		.question:focus {
+			border: 2px solid black;
+		}
+		#next {
+			position: absolute;
+			bottom: 4%;
+			right: 12%;
+		}
+		button {
+			background-color: #5d588e;
+			border-radius: 27px;
+			font-size: 17px;
+			border: none;
+			padding: 20% 100%;
+			margin-top: 50%;
+			color: #fff;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #001F31;
+			transform: translateY(-1px);
+		}
+	</style>
+
+	<div id="row">
+		<div id="block">
+			<div id="close">
+				<a href="/"><i class="fa-solid fa-xmark"></i></a>
+			</div>
+			<div id="block_timer">
+				<div id="timer">
+					<p>60s</p>
+				</div>
+			</div>
+			<div id="question">
+				<h3>{{ question.Question }}</h3>
+			</div>
+			<div id="quest_block">
+				{% for question in question %}
+					<div class="question">
+						{{ question.Question }}
+					</div>
+				{% endfor %}
+				{% for reponse in reponse %}
+					<a href="quiz?id={{ app.request.get('id') }}&question={{ app.request.get('question') + 1 }}&res={{ app.request.get('res') }}/{{ reponse.id }}" class="question">
+						{{ reponse.Reponse }}
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

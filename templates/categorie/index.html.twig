@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz | Catégories{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    body {
+        background-color: #3a4d58;
+        font-family: 'Inter', sans-serif;
+
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container a {
+        margin: 0;
+    }
+
+    .categorie {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        width: 200px;
+        height: 250px;
+        background-color: #f1f1f1;
+        padding: 5px;
+        margin: 15px;
+        border-radius: 40px;
+        margin-bottom: 5px;
+    }
+
+    img{
+        padding:0;
+        margin:0;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        width: 200px;
+        height: 150px;
+    }
+    .categorie:hover {
+        transition: all 0.2s ease;
+        transform: translateY(-8px);
+        cursor: pointer;
+    }
+
+    .categorie p {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        color: #333;
+        padding-bottom: 20%;
+    }
+</style>
+
+    <div class="container">
+        {% for categorie in categorie %}
+            <a href="quiz?id={{ categorie.id }}&question=1">
+                <div class="categorie">
+                    <div class="img_cat">
+                        <img src={{ categorie.image}} alt="Image catégorie">
+                    </div>
+                    <div class="titre_cat">
+                        <p>{{ categorie.name }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
+    </div>
+{% endblock %}

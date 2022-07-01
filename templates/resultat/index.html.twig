@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats{% endblock %}
+
+{% block body %}
+<script src="https://kit.fontawesome.com/cb0b768da2.js" crossorigin="anonymous"></script>
+<style>
+    body {
+		font-family: 'Inter', sans-serif;
+		overflow-y: hidden;
+	}
+	#row {
+		background-color: #3A4D58;
+		height: 95vh;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+	}
+	#retour {
+		width: 55%;
+		padding-bottom: 6px;
+	}
+	#retour a:hover {
+		transform: translateY(-3px);
+		color: #C4C4C4;
+	}
+	#block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 55%;
+		background-color: #C4C4C4;
+		border-radius: 20px;
+		position: relative;
+		padding-bottom: 3%;
+	}
+	#head_result {
+		background-color: #001F31;
+		width: 100%;
+		color: #fff;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		text-align: center;
+		padding: 4% 0 4% 0;
+	}
+	#block_score {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-top: 3%;
+	}
+	#quiz_score {
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		width: 100%;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	#score {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		background-color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 40px;
+		margin: 4%;
+	}
+	p {
+		padding: 0;
+		margin: 0;
+		color: #001F31;
+	}
+</style>
+
+<div id="row">
+	<div id="retour">
+		<a href="/"><i class="fa-solid fa-arrow-left"></i>  Retour au menu</a>
+	</div>
+    <div id="block">
+		<div id="head_result">
+			<h1>&#x1F386; DÉLICITATIONS ! &#x1F386;</h1>
+		</div>
+        <div id="block_score">
+			<p>Quiz passé : {{ catégorie.0.name }}</p>
+			<div id="quiz_score">
+				<p>Tu as obtenu la note de :</p>
+				<div id="score">
+					<h5>{{ score }} / {{ count }}</h5>
+				</div>
+			</div>
+			{% if score == count %}
+				<style>
+					#score {
+						color: #36852a;
+					}
+				</style>
+				<p>Tu as réussi tout le quiz !</p>
+			{% elseif score > (count / 2) %}
+				<style>
+					#score {
+						color: #36852a;
+					}
+				</style>
+				<p>Bravo !</p>
+			{% elseif score == (count/2) %}
+				<style>
+					#score {
+						color: #5d588e;
+					}
+				</style>
+				<p>Tu as eu la moyenne, bravo !</p>
+			{% else %}
+				<style>
+					#score {
+						color: #b32929;
+					}
+				</style>
+				<p>Dommage, tu feras mieux la prochaine fois !</p>
+			{% endif %}
+		</div>
+    </div>
+</div>
+{% endblock %}

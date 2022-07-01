@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz | Connexion{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-y: hidden;
+        }
+        #row {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        form {
+            background-color: #116984;
+            border-radius: 10px;
+            text-align: center;
+            padding: 3% 2%;
+            padding-bottom: 1%;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+        }
+        h1 {
+            font-weight: lighter;
+            margin-bottom: 25px;
+            font-size: 30px;
+        }
+        input {
+            background-color: rgba(0,0,0,0);
+            border: none;
+            border-bottom: 1px solid black;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            padding-bottom: 2px;
+            padding-left: 8px;
+        }
+        form div {
+            display: flex;
+            align-items: center;
+        }
+        button {
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+            padding: 3px 8px;
+        }
+        span {
+            font-size: 10px;
+            margin-top: 10px;
+        }
+        span a {
+            margin: 0;
+            color: white;
+        }
+        span a:hover {
+            text-decoration: underline;
+        }
+
+        input::placeholder{
+            color: #dadada;
+        }
+
+        input{
+            color: #dadada;
+        }
+
+        input:focus {
+            outline:  none;
+        }
+    </style>
+
+    <div id="row">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <h1>Connectez-vous</h1>
+            <input type="email" placeholder="Email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <input type="password" placeholder="Mot de passe" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+            #}
+
+            <button class="btn btn-lg btn-primary" type="submit">Se connecter</button>
+            <span>Pas encore membre ? <a href="/register">S'inscrire</a></span>
+        </form>
+    </div>
+{% endblock %}

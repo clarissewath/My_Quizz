@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Profil de {{ app.user.pseudo }}
+{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        overflow-y: hidden;
+    }
+    #row {
+        background-color: #3A4D58;
+        height: 95vh;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    #block {
+        display: flex;
+        width: 55%;
+        background-color: rgba(196, 196, 196, 13%);
+        padding: 5%;
+        border-radius: 20px;
+        position: relative;
+    }
+    #user_info {
+        width: 30%;
+        background-color: #C4C4C4;
+        border-radius: 30px;
+        padding: 0% 0.5%;
+        padding-top: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #avatar {
+        width: 50%;
+        border-radius: 50%;
+        margin-bottom: 3%;
+    }
+    #username {
+        font-size: 25px;
+        margin-bottom: 2.5%;
+    }
+    #date {
+        font-size: 12px;
+        margin-bottom: 15%;
+    }
+    #user_mail {
+        margin-bottom: 40px;
+    }
+    #update_btn {
+        margin-bottom: 25px;
+        border: none;
+        border-radius: 4px;
+        padding: 3px 5px;
+    }
+    #historique {
+        width: 65%;
+        margin-left: 30px;
+    }
+    #top_block {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 55px;
+    }
+    h2 {
+        font-weight: lighter;
+        padding-bottom: 10px;
+        padding-left: 15px;
+    }
+    #note {
+        position: absolute;
+        right: 11%;
+        top: 18%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: lighter;
+    }
+    #note img {
+        width: 72%;
+        height: auto;
+    }
+    #note h3 {
+        position: absolute;
+        font-size: 30px;
+        font-weight: lighter;
+    }
+    #bottom_block {
+        height: 70%;
+        background-color: #C4C4C4;
+        border-radius: 30px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #quizz_name, #quizz_score, #quizz_date {
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+        padding: 0 25px;
+    }
+    #bottom_block h3 {
+        text-decoration: underline;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        z-index: 1;
+    }
+    #bottom-block span {
+        margin: 0;
+    }
+    #edit {
+        margin-top: 12px;
+        border-radius: 5px;
+        border: none;
+        padding: 3px 8px;
+        background-color: #fff;
+        color: #001F31;
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="example-wrapper" id="row">
+    <div id="block">
+        <div id="user_info">
+            <img src="https://cdn.discordapp.com/attachments/908771325638737921/972144047714107502/1649657649477.jpg" alt="avatar" id="avatar">
+            <span id="username">{{ app.user.pseudo }}</span>
+            <span id="date">Membre depuis le 01/01/2022</span>
+            <span id="user_mail">{{ app.user.email}}</span>
+            <a href="/user/edit/{{app.user.id}}">Modifier mes informations</a>
+        </div>
+        <div id="historique">
+            <div id="top_block">
+                <h2>QUIZZ PASSÉS :</h2>
+                <div id="note">
+                    <img src="https://cdn.discordapp.com/attachments/908771325638737921/971763555630194708/note.png" alt="texte">
+                    <h3>12</h3>
+                </div>
+            </div>
+            <div id="bottom_block">
+                <div id="quizz_score">
+                    <h3>Score</h3>
+                        
+                </div>
+                <div id="quizz_date">
+                    <h3>Date</h3>
+                    
+                </div>
+                <div id="quizz_date">
+                    <h3>Rejouer</h3>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

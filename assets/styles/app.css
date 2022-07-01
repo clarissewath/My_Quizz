@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #3A4D58;
+}
+
+.navbar {
+    background-color: #001F31;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav {
+    padding: 0;
+    margin: 0.8em;
+}
+
+.nav li {
+    display: inline;
+    list-style: none;
+}
+
+.nav a,
+a {
+    display: inline-block;
+    margin: 0 30px;
+    text-decoration: none;
+    color: white;
+}
+
+p {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
+    font-size: 20px;
+}
